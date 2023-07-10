@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:ApisJM.Models"
+             x:Class="ApisJM.ViewModels.ConsumoApiDogs"
+             Title="ConsumoApiDogs">
+    <StackLayout>
+        <Label Text="Litas de Comentarios" FontSize="Title" Padding="30,10,30,10" />
+        <SearchBar x:Name="Buscador" 
+                   Placeholder="Ingrese un Id" 
+                   TextColor="Black"/>
+        <Button Text="Llamar API" 
+                Clicked="Button_Clicked"/>
+        <CollectionView x:Name="Lista"
+                        SelectionMode="Single"
+                        SelectionChanged="CollectionView_SelectionChanged">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:DogsJM">
+                    <ScrollView>
+                        <VerticalStackLayout>
+                            <Label Text="{Binding id}" VerticalOptions="Center" HorizontalOptions="Center"/>
+                            <Image Source="{Binding url}" HeightRequest="500" WidthRequest="500" VerticalOptions="Center" HorizontalOptions="Center"/>
+                            <Button Text="AGREGAR" 
+                                    Clicked="Agegar"/>
+                        </VerticalStackLayout>
+                    </ScrollView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>
